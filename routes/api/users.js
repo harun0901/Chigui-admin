@@ -36,6 +36,8 @@ router.post('/add', (req, res) => {
         }
     });
 });
+
+
 router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
     if (!isValid) {
@@ -64,6 +66,8 @@ router.post('/register', (req, res) => {
         }
     });
 });
+
+
 router.post('/get', (req, res) => {
     User.find({}).select(['-password']).then(user => {
         if (user) {
