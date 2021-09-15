@@ -9,7 +9,7 @@ global.jQuery = $;
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-$("#menu-toggle").click(function() {
+$(".menu-toggle").click(function() {
     $("#wrapper").toggleClass("toggled");
 });
 

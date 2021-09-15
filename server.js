@@ -3,8 +3,15 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const users = require('./routes/api/users');
-
+const userRouter = require ('./routes/api/users');
+const batteryRouter = require('./routes/api/battery');
+const electronicRouter = require('./routes/api/electronic');
+const carRouter = require('./routes/api/car');
+const reviewRouter = require('./routes/api/review');
+const oilRouter = require('./routes/api/oil');
+const highlightRouter = require('./routes/api/highlight');
+const quoteRouter = require('./routes/api/quote');
+const servicesRouter = require ('./routes/api/services')
 require('./config/passport')(passport);
 
 const app = express();
@@ -30,8 +37,15 @@ mongoose.connect(db, { useNewUrlParser: true })
 
 app.use(passport.initialize());
 
-app.use('/api', users);
-
+app.use ('/api/user', userRouter);
+app.use ('/api/battery', batteryRouter);
+app.use ('/api/electronic', electronicRouter);
+app.use ('/api/car',carRouter);
+app.use ('/api/review', reviewRouter);
+app.use ('/api/oil', oilRouter);
+app.use ('/api/highlight', highlightRouter);
+app.use ('/api/quote', quoteRouter);
+app.use ('/api/services', servicesRouter);
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('*', function (req, res) {

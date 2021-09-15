@@ -1,6 +1,7 @@
 import {
     SET_CURRENT_USER,
     USER_ADD,
+    USER_DELETE,
     USER_LOADING,
     USER_UPDATE
 } from "../actions/types";
@@ -18,6 +19,11 @@ export default function(state = initialState, action) {
                 user: action.payload
             };
         case USER_UPDATE:
+            return {
+                isAuthenticated: !isEmpty(action.payload),
+                user: action.payload,
+            };
+        case USER_DELETE:
             return {
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload,

@@ -1,16 +1,17 @@
 import React, { Component, Fragment } from "react";
 import Navbar from "../partials/Navbar";
 import Sidebar from "../partials/Sidebar";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faList} from "@fortawesome/free-solid-svg-icons/faList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faList } from "@fortawesome/free-solid-svg-icons/faList";
 import ReactDatatable from '@ashvin27/react-datatable';
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import axios from "axios";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import UserAddModal from "../partials/UserAddModal";
-import UserUpdateModal from "../partials/UserUpdateModal";
-import { toast, ToastContainer} from "react-toastify";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import UserAddModal from "../partials/UserModal/UserAddModal";
+import UserUpdateModal from "../partials/UserModal/UserUpdateModal";
+import UserDeleteModal from "../partials/UserModal/UserDeleteModal";
+import { toast, ToastContainer } from "react-toastify";
 
 class Users extends Component {
 
@@ -19,36 +20,29 @@ class Users extends Component {
 
         this.columns = [
             {
-                key: "_id",
-                text: "Id",
-                className: "id",
-                align: "left",
-                sortable: true,
-            },
-            {
                 key: "name",
-                text: "Name",
+                text: "Nombre",
                 className: "name",
                 align: "left",
                 sortable: true,
             },
             {
                 key: "email",
-                text: "Email",
+                text: "Correo electrónico",
                 className: "email",
                 align: "left",
                 sortable: true
             },
             {
                 key: "date",
-                text: "Date",
+                text: "Fecha",
                 className: "date",
                 align: "left",
                 sortable: true
             },
             {
                 key: "action",
-                text: "Action",
+                text: "Acción",
                 className: "action",
                 width: 100,
                 align: "left",
@@ -61,10 +55,12 @@ class Users extends Component {
                                 data-target="#update-user-modal"
                                 className="btn btn-primary btn-sm"
                                 onClick={() => this.editRecord(record)}
-                                style={{marginRight: '5px'}}>
+                                style={{ marginRight: '5px' }}>
                                 <i className="fa fa-edit"></i>
                             </button>
                             <button
+                                data-toggle="modal"
+                                data-target="#delete-user-modal"
                                 className="btn btn-danger btn-sm"
                                 onClick={() => this.deleteRecord(record)}>
                                 <i className="fa fa-trash"></i>
@@ -77,23 +73,23 @@ class Users extends Component {
 
         this.config = {
             page_size: 10,
-            length_menu: [ 10, 20, 50 ],
+            length_menu: [10, 20, 50],
             filename: "Users",
-            no_data_text: 'No user found!',
+            no_data_text: '¡Datos no encontrados!',
             button: {
                 excel: true,
                 print: true,
                 csv: true
             },
             language: {
-                length_menu: "Show _MENU_ result per page",
-                filter: "Filter in records...",
-                info: "Showing _START_ to _END_ of _TOTAL_ records",
+                length_menu: "Show _MENU_ resultado por página",
+                filter: "Filtrar en registros...",
+                info: "Demostración _START_ para _END_ of _TOTAL_ registros",
                 pagination: {
-                    first: "First",
-                    previous: "Previous",
-                    next: "Next",
-                    last: "Last"
+                    first: "Primero",
+                    previous: "Previo",
+                    next: "Próximo",
+                    last: "Último"
                 }
             },
             show_length_menu: true,
@@ -129,48 +125,36 @@ class Users extends Component {
 
     getData() {
         axios
-            .post("/api/user-data")
+            .post("/api/user/get")
             .then(res => {
-                this.setState({ records: res.data})
+                this.setState({ records: res.data })
             })
             .catch()
     }
 
     editRecord(record) {
-        this.setState({ currentRecord: record});
+        this.setState({ currentRecord: record });
     }
-
     deleteRecord(record) {
-        axios
-            .post("/api/user-delete", {_id: record._id})
-            .then(res => {
-                if (res.status === 200) {
-                   toast(res.data.message, {
-                       position: toast.POSITION.TOP_CENTER,
-                   })
-                }
-            })
-            .catch();
-        this.getData();
+        this.setState({ currentRecord: record });
     }
 
     pageChange(pageData) {
-        console.log("OnPageChange", pageData);
     }
 
     render() {
         return (
             <div>
-                <Navbar/>
+                <Navbar />
                 <div className="d-flex" id="wrapper">
-                    <Sidebar/>
-                    <UserAddModal/>
-                    <UserUpdateModal record={this.state.currentRecord}/>
+                    <Sidebar />
+                    <UserAddModal />
+                    <UserUpdateModal record={this.state.currentRecord} />
+                    <UserDeleteModal record={this.state.currentRecord} />
                     <div id="page-content-wrapper">
                         <div className="container-fluid">
-                            <button className="btn btn-link mt-3" id="menu-toggle"><FontAwesomeIcon icon={faList}/></button>
-                            <button className="btn btn-outline-primary float-right mt-3 mr-2" data-toggle="modal" data-target="#add-user-modal"><FontAwesomeIcon icon={faPlus}/> Add User</button>
-                            <h1 className="mt-2 text-primary">Users List</h1>
+                            <button className="btn btn-outline-primary float-right mt-3 mr-2" data-toggle="modal" data-target="#add-user-modal"><FontAwesomeIcon icon={faPlus} /> Agregar usuario</button>
+                            <h1 className="mt-2 text-primary">Lista de usuarios</h1>
                             <ReactDatatable
                                 config={this.config}
                                 records={this.state.records}
@@ -179,7 +163,7 @@ class Users extends Component {
                             />
                         </div>
                     </div>
-                    <ToastContainer/>
+                    <ToastContainer />
                 </div>
             </div>
         );

@@ -18,9 +18,17 @@ class Sidebar extends Component {
         return (
             <div className="border-right h-100" id="sidebar-wrapper">
                 <div className="list-group list-group-flush">
+                    {/* <Link  className="list-group-item list-group-item-action" ><i className="fa fa-angle-down"></i> First</Link> */}
                     <Link to="/dashboard" className="list-group-item list-group-item-action">Dashboard</Link>
                     <Link to="/users" className="list-group-item list-group-item-action">Users</Link>
-                    <Link to="/events" className="list-group-item list-group-item-action">Events</Link>
+                    <Link to="/electronic" className="list-group-item list-group-item-action">Electronic</Link>
+                    <Link to="/battery" className="list-group-item list-group-item-action">Battery</Link>
+                    <Link to="/car" className="list-group-item list-group-item-action">Car</Link>
+                    <Link to="/review" className="list-group-item list-group-item-action">Review</Link>
+                    <Link to="/oil" className="list-group-item list-group-item-action">Oil</Link>
+                    <Link to="/highlight" className="list-group-item list-group-item-action">Highlight</Link>
+                    <Link to="/quote" className="list-group-item list-group-item-action">Quote</Link>
+                    <Link to="/services" className="list-group-item list-group-item-action">Services</Link>
                     <button className="list-group-item list-group-item-action" onClick={this.onLogoutClick}>Logout <FontAwesomeIcon icon={faSignOutAlt} /></button>
                 </div>
             </div>

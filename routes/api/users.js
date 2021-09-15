@@ -8,7 +8,35 @@ const validateLoginInput = require('../../validation/login');
 const validateUpdateUserInput = require('../../validation/updateUser');
 const User = require('../../models/User');
 
-router.post('/user-add', (req, res) => {
+router.post('/add', (req, res) => {
+    const { errors, isValid } = validateRegisterInput(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+    User.findOne({ email: req.body.email }).then(user => {
+        if (user) {
+            return res.status(400).json({ email: 'Email already exists' });
+        } else {
+            const newUser = new User({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password
+            });
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                    if (err) throw err;
+                    newUser.password = hash;
+                    newUser
+                        .save()
+                        .then(user => {
+                            return res.status(200).json({dmessage: 'User added successfully. Refreshing data...'})
+                        }).catch(err => console.log(err));
+                });
+            });
+        }
+    });
+});
+router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
@@ -36,8 +64,7 @@ router.post('/user-add', (req, res) => {
         }
     });
 });
-
-router.post('/user-data', (req, res) => {
+router.post('/get', (req, res) => {
     User.find({}).select(['-password']).then(user => {
         if (user) {
             return res.status(200).send(user);
@@ -45,7 +72,7 @@ router.post('/user-data', (req, res) => {
     });
 });
 
-router.post('/user-delete', (req, res) => {
+router.post('/delete', (req, res) => {
     User.deleteOne({ _id: req.body._id}).then(user => {
         if (user) {
             return res.status(200).json({message: 'User deleted successfully. Refreshing data...', success: true})
@@ -53,7 +80,7 @@ router.post('/user-delete', (req, res) => {
     });
 });
 
-router.post('/user-update', (req, res) => {
+router.post('/update', (req, res) => {
     const { errors, isValid } = validateUpdateUserInput(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
