@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import Navbar from "../partials/Navbar";
 import Sidebar from "../partials/Sidebar";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faList} from "@fortawesome/free-solid-svg-icons/faList";
 import ReactDatatable from '@ashvin27/react-datatable';
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
@@ -20,6 +19,19 @@ class Battery extends Component {
         super(props);
 
         this.columns = [
+            {   sortable: true,
+                text: (
+                        <input type="checkbox" className="form-control"/>
+                    )
+                ,
+                cell: record => {
+                    return (
+                        <input type="checkbox" className="form-control"/>
+                    )
+                },
+                align:'center',
+                width:'40px'
+            },
             {
                 key: "brand",
                 text: "Marca",
@@ -87,10 +99,10 @@ class Battery extends Component {
                 filter: "Filtrar en registros...",
                 info: "Demostración _START_ para _END_ of _TOTAL_ registros",
                 pagination: {
-                    first: "Primero",
-                    previous: "Previo",
-                    next: "Próximo",
-                    last: "Último"
+                    first: "<<",
+                    previous: "<",
+                    next: ">",
+                    last: ">>"
                 }
             },
             show_length_menu: true,

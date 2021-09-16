@@ -23,11 +23,23 @@ class Review extends Component {
         super(props);
 
         this.columns = [
+            {   sortable: true,
+                text: (
+                        <input type="checkbox" className="form-control"/>
+                    )
+                ,
+                cell: record => {
+                    return (
+                        <input type="checkbox" className="form-control"/>
+                    )
+                },
+                align:'center',
+                width:'40px'
+            },
             {
                 key: "type",
                 text: "Escribe",
                 className: "type",
-                align: "left",
                 sortable: true,
             },
             {
@@ -35,7 +47,6 @@ class Review extends Component {
                 text: "Datos detallados",
                 className: "detaildata",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -55,7 +66,6 @@ class Review extends Component {
                 text: "Acción",
                 className: "action",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -85,28 +95,24 @@ class Review extends Component {
                 key: "subname",
                 text: "Subnombre",
                 className: "subname",
-                align: "left",
                 sortable: true,
             },
             {
                 key: "description",
                 text: "Descripción",
                 className: "description",
-                align: "left",
                 sortable: true,
             },
             {
                 key: "time",
                 text: "Tiempo",
                 className: "time",
-                align: "left",
                 sortable: true,
             },
             {
                 key: "price",
                 text: "Precio",
                 className: "price",
-                align: "left",
                 sortable: true,
             },            
             {
@@ -114,7 +120,6 @@ class Review extends Component {
                 text: "Acción",
                 className: "action",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -156,10 +161,10 @@ class Review extends Component {
                 filter: "Filtrar en registros...",
                 info: "Demostración _START_ para _END_ of _TOTAL_ registros",
                 pagination: {
-                    first: "Primero",
-                    previous: "Previo",
-                    next: "Próximo",
-                    last: "Último"
+                    first: "<<",
+                    previous: "<",
+                    next: ">",
+                    last: ">>"
                 }
             },
             show_length_menu: true,

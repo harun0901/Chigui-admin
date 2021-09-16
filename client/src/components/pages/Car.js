@@ -30,12 +30,24 @@ class Car extends Component {
         super(props);
 
         this.columns = [
+            {   sortable: true,
+                text: (
+                        <input type="checkbox" className="form-control"/>
+                    )
+                ,
+                cell: record => {
+                    return (
+                        <input type="checkbox" className="form-control"/>
+                    )
+                },
+                align:'center',
+                width:'40px'
+            },
             {
                 key: "mark",
                 text: "Marcos",
                 className: "mark",
                 width: 100,
-                align: "left",
                 sortable: true,
                 cell: record => {
                     return (
@@ -49,7 +61,6 @@ class Car extends Component {
                 key: "name",
                 text: "Nombre",
                 className: "name",
-                align: "left",
                 sortable: true,
             },
             {
@@ -57,7 +68,6 @@ class Car extends Component {
                 text: "Modelo",
                 className: "model",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -77,7 +87,6 @@ class Car extends Component {
                 text: "Acción",
                 className: "action",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -108,7 +117,6 @@ class Car extends Component {
                 key: "modelName",
                 text: "Nombre del modelo",
                 className: "modelName",
-                align: "left",
                 sortable: true,
             },
             {
@@ -116,7 +124,6 @@ class Car extends Component {
                 text: "Año",
                 className: "year",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -136,7 +143,6 @@ class Car extends Component {
                 text: "Acción",
                 className: "action",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -167,7 +173,6 @@ class Car extends Component {
                 key: "date",
                 text: "Fecha",
                 className: "date",
-                align: "left",
                 sortable: true,
             },
             {
@@ -175,7 +180,6 @@ class Car extends Component {
                 text: "Cilindro",
                 className: "cylinder",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -195,7 +199,6 @@ class Car extends Component {
                 text: "Acción",
                 className: "action",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -225,7 +228,6 @@ class Car extends Component {
                 key: "cylinderName",
                 text: "Nombre del cilindro",
                 className: "cylinderName",
-                align: "left",
                 sortable: true,
             },
             {
@@ -233,7 +235,6 @@ class Car extends Component {
                 text: "Acción",
                 className: "action",
                 width: 100,
-                align: "left",
                 sortable: false,
                 cell: record => {
                     return (
@@ -273,10 +274,10 @@ class Car extends Component {
                 filter: "Filtrar en registros...",
                 info: "Demostración _START_ para _END_ of _TOTAL_ registros",
                 pagination: {
-                    first: "Primero",
-                    previous: "Previo",
-                    next: "Próximo",
-                    last: "Último"
+                    first: "<<",
+                    previous: "<",
+                    next: ">",
+                    last: ">>"
                 }
             },
             show_length_menu: true,

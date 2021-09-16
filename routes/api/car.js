@@ -27,6 +27,7 @@ router.post('/get', (req, res) => {
          }
      });
  });
+
 router.post('/delete', (req, res) => {
     Car.deleteOne({ _id: req.body._id}).then(car => {
         if (car) {
@@ -34,7 +35,8 @@ router.post('/delete', (req, res) => {
         }
     });
 });
- router.post('/add', uploadimgage, (req, res) =>{
+
+router.post('/add', uploadimgage, (req, res) =>{
      console.log("req.file", req.file);
      let markpath;
      res.send(req.file); 
@@ -64,8 +66,7 @@ router.post('/delete', (req, res) => {
      return res.status(400).send({ error: error.message })
  });
 
- router.post('/update', uploadimgage, (req, res) =>{
-    
+ router.post('/update', uploadimgage, (req, res) => {
     console.log("req.body", req.body);
     console.log("req.file1", req.file);
     const _id = req.body._id;
@@ -103,8 +104,8 @@ router.post('/model/add', (req, res) => {
     
     const _id = req.body.id;
     Car.findOne({ _id }).then(car => {
+        
         if (car) {
-            
             let data = {
                 'modelName': req.body.modelname,
             };
@@ -367,4 +368,5 @@ router.post('/cylinder/delete', (req, res) => {
         }
     });
 });
+
  module.exports = router;

@@ -9,6 +9,7 @@ router.post('/get', (req, res) => {
          }
      });
  });
+
  router.post('/add', (req, res) => {
      console.log("quote-add-controller",req.body);
     Quote.findOne({ detail: req.body.detail }).then(quote => {
@@ -52,6 +53,7 @@ router.post('/update', (req, res) => {
         }
     });
 });
+
 router.post('/delete', (req, res) => {
     Quote.deleteOne({ _id: req.body._id}).then(quote => {
         if (quote) {

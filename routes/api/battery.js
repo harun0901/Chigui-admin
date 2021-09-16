@@ -9,6 +9,7 @@ router.post('/get', (req, res) => {
         }
     });
 });
+
 router.post('/add', (req, res) => {
     Battery.findOne({ referrence: req.body.referrence }).then(battery => {
         if (battery) {

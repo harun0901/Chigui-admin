@@ -1,9 +1,9 @@
 {
-  "name": "login-registration",
+  "name": "chigui-admin",
   "version": "1.0.0",
-  "description": "A simple mern application for login-registration system",
+  "description": "Chigui admin panel",
   "main": "server.js",
-  "author": "Neha Sharma",
+  "author": "glisten",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",

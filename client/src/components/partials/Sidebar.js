@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+import {faBacon, faBatteryHalf, faBolt, faBook, faBorderAll, faCar, faOilCan, faReceipt, faSignOutAlt, faThumbsUp, faUser, faUserAlt, faWrench} from "@fortawesome/free-solid-svg-icons";
 import {connect} from "react-redux";
 import {logoutUser} from "../../actions/authActions";
 import {Link} from "react-router-dom";
@@ -18,18 +18,17 @@ class Sidebar extends Component {
         return (
             <div className="border-right h-100" id="sidebar-wrapper">
                 <div className="list-group list-group-flush">
-                    {/* <Link  className="list-group-item list-group-item-action" ><i className="fa fa-angle-down"></i> First</Link> */}
-                    <Link to="/dashboard" className="list-group-item list-group-item-action">Dashboard</Link>
-                    <Link to="/users" className="list-group-item list-group-item-action">Users</Link>
-                    <Link to="/electronic" className="list-group-item list-group-item-action">Electronic</Link>
-                    <Link to="/battery" className="list-group-item list-group-item-action">Battery</Link>
-                    <Link to="/car" className="list-group-item list-group-item-action">Car</Link>
-                    <Link to="/review" className="list-group-item list-group-item-action">Review</Link>
-                    <Link to="/oil" className="list-group-item list-group-item-action">Oil</Link>
-                    <Link to="/highlight" className="list-group-item list-group-item-action">Highlight</Link>
-                    <Link to="/quote" className="list-group-item list-group-item-action">Quote</Link>
-                    <Link to="/services" className="list-group-item list-group-item-action">Services</Link>
-                    <button className="list-group-item list-group-item-action" onClick={this.onLogoutClick}>Logout <FontAwesomeIcon icon={faSignOutAlt} /></button>
+                    <Link to="/dashboard" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faBorderAll}/>Dashboard</Link>
+                    <Link to="/users" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faUserAlt}/>Users</Link>
+                    <Link to="/electronic" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faBolt}/>Electronic</Link>
+                    <Link to="/battery" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faBatteryHalf}/>Battery</Link>
+                    <Link to="/car" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faCar}/>Car</Link>
+                    <Link to="/review" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faBook}/>Review</Link>
+                    <Link to="/oil" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faOilCan}/>Oil</Link>
+                    <Link to="/highlight" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faThumbsUp}/>Highlight</Link>
+                    <Link to="/quote" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faReceipt}/>Quote</Link>
+                    <Link to="/services" className="list-group-item list-group-item-action"><FontAwesomeIcon icon={faWrench}/>Services</Link>
+                    <Link className="list-group-item list-group-item-action" onClick={this.onLogoutClick} to="#"><FontAwesomeIcon icon={faSignOutAlt} />Logout </Link>
                 </div>
             </div>
         );

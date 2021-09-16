@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faList} from "@fortawesome/free-solid-svg-icons/faList";
 import {Link} from "react-router-dom";
 import {faUserAlt} from "@fortawesome/free-solid-svg-icons/faUserAlt";
+import { faBatteryHalf, faBolt, faBook, faCar, faOilCan, faReceipt, faWrench } from "@fortawesome/free-solid-svg-icons";
 
 class Dashboard extends Component {
 
@@ -27,7 +28,7 @@ class Dashboard extends Component {
                         <div className="container-fluid">
                             <h1 className="mt-2 text-primary">Dashboard</h1>
                             <div className="row px-2">
-                                <div className="col-sm-3 p-sm-2">
+                                <div className="col-sm-3 p-sm-2"> 
                                     <div className="card bg-primary text-white shadow-lg">
                                         <div className="card-body">
                                             <h5 className="card-title">Users</h5>
@@ -43,7 +44,7 @@ class Dashboard extends Component {
                                             <h5 className="card-title">Battery</h5>
                                             <p className="card-text">With supporting text below as a natural lead-in to
                                                 additional content.</p>
-                                            <Link to="/battery" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faUserAlt}/> Go to Battery</Link>
+                                            <Link to="/battery" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faBatteryHalf}/> Go to Battery</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -53,7 +54,7 @@ class Dashboard extends Component {
                                             <h5 className="card-title">Electronic</h5>
                                             <p className="card-text">With supporting text below as a natural lead-in to
                                                 additional content.</p>
-                                                <Link to="/electronic" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faUserAlt}/> Go to Electronic</Link>
+                                                <Link to="/electronic" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faBolt}/> Go to Electronic</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +64,7 @@ class Dashboard extends Component {
                                             <h5 className="card-title">Car</h5>
                                             <p className="card-text">With supporting text below as a natural lead-in to
                                                 additional content.</p>
-                                                <Link to="/car" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faUserAlt}/> Go to Cars</Link>
+                                                <Link to="/car" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faCar}/> Go to Cars</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +74,7 @@ class Dashboard extends Component {
                                             <h5 className="card-title">Review</h5>
                                             <p className="card-text">With supporting text below as a natural lead-in to
                                                 additional content.</p>
-                                                <Link to="/review" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faUserAlt}/> Go to Review</Link>
+                                                <Link to="/review" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faBook}/> Go to Review</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -83,11 +84,11 @@ class Dashboard extends Component {
                                             <h5 className="card-title">Oil</h5>
                                             <p className="card-text">With supporting text below as a natural lead-in to
                                                 additional content.</p>
-                                                <Link to="/oil" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faUserAlt}/> Go to Oil</Link>
+                                                <Link to="/oil" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faOilCan}/> Go to Oil</Link>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-sm-3 p-sm-2">
+                                {/* <div className="col-sm-3 p-sm-2">
                                     <div className="card bg-dark text-white shadow-lg">
                                         <div className="card-body">
                                             <h5 className="card-title">Highlight</h5>
@@ -96,14 +97,14 @@ class Dashboard extends Component {
                                                 <Link to="/highlight" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faUserAlt}/> Go to Highlight</Link>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="col-sm-3 p-sm-2">
                                     <div className="card bg-dark text-white shadow-lg">
                                         <div className="card-body">
                                             <h5 className="card-title">Quote</h5>
                                             <p className="card-text">With supporting text below as a natural lead-in to
                                                 additional content.</p>
-                                                <Link to="/quote" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faUserAlt}/> Go to Quote</Link>
+                                                <Link to="/quote" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faReceipt}/> Go to Quote</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +114,7 @@ class Dashboard extends Component {
                                             <h5 className="card-title">Services</h5>
                                             <p className="card-text">With supporting text below as a natural lead-in to
                                                 additional content.</p>
-                                                <Link to="/services" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faUserAlt}/> Go to Services</Link>
+                                                <Link to="/services" className="btn btn-light"><FontAwesomeIcon className="text-primary" icon={faWrench}/> Go to Services</Link>
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+
 const userRouter = require ('./routes/api/users');
 const batteryRouter = require('./routes/api/battery');
 const electronicRouter = require('./routes/api/electronic');
@@ -12,6 +13,7 @@ const oilRouter = require('./routes/api/oil');
 const highlightRouter = require('./routes/api/highlight');
 const quoteRouter = require('./routes/api/quote');
 const servicesRouter = require ('./routes/api/services')
+
 require('./config/passport')(passport);
 
 const app = express();
@@ -25,8 +27,6 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(bodyParser.json());
-
-app.listen(9000);
 
 const db = require('./config/keys').mongoURI;
 
@@ -46,11 +46,13 @@ app.use ('/api/oil', oilRouter);
 app.use ('/api/highlight', highlightRouter);
 app.use ('/api/quote', quoteRouter);
 app.use ('/api/services', servicesRouter);
+
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));

@@ -11,7 +11,7 @@ router.post('/get', (req, res) => {
      });
  });
 
- router.post('/add', (req, res) => {
+router.post('/add', (req, res) => {
     Electronic.findOne({ name: req.body.name }).then(electronic => {
         if (electronic) {
             return res.status(400).json({ electronic: 'This electronic type already exists' });

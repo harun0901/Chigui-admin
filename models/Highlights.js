@@ -28,4 +28,5 @@ HighlightSchema.virtual('id').get(function(){
 HighlightSchema.set('toJSON', {
     virtuals: true
 });
+
 module.exports = Highlight = mongoose.model('highlights', HighlightSchema);

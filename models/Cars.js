@@ -38,7 +38,8 @@ CarsSchema.virtual('id').get(function(){
     return this._id.toHexString();
   });
   
-  CarsSchema.set('toJSON', {
-    virtuals: true
-  });
+CarsSchema.set('toJSON', {
+  virtuals: true
+});
+
 module.exports = Post = mongoose.model('cars', CarsSchema);
